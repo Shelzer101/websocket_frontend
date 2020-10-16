@@ -1,0 +1,34 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
+header {
+    background-color: purple;
+    width: 1000px;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+}
+
+#message_box {
+    height: 300px;
+    width: 400px;
+    background-color: aliceblue;
+}
+
+#chatbox {
+    min-height: 300px;
+    width: 600px;
+    background-color: aqua;
+}
