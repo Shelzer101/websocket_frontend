@@ -1,7 +1,7 @@
 function Connect() {
     var b_Text = document.getElementById("connect_button");
 
-    let ws = new WebSocket("ws://dd06e998dffb.ngrok.io");
+    let ws = new WebSocket("ws://localhost:8080");
     
     ws.onopen = () => {
         let name = document.forms["message"].name.value;

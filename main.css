@@ -11,24 +11,45 @@ body {
 }
 
 header {
-    background-color: purple;
+    background-color: lightgray;
     width: 1000px;
+}
+
+header h1 {
+    margin-left: 100px;
 }
 
 main {
     display: flex;
     justify-content: space-between;
     width: 1000px;
+    padding-top: 10px;
 }
 
 #message_box {
     height: 300px;
     width: 400px;
     background-color: aliceblue;
+    border-radius: 10px;
+}
+
+#message_box form {
+    margin-left: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #chatbox {
+    margin-left: 10px;
     min-height: 300px;
     width: 600px;
-    background-color: aqua;
+    color: white;
+    background-color: #333333;
+    border-radius: 10px;
+}
+
+#chatbox p {
+   margin-left: 20px; 
 }
