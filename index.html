@@ -4,7 +4,7 @@
     <head>
         <title>inTech Chat</title>
         <link rel="stylesheet" href="main.css"/>
-        <script type="text/javascript" src="main.js" ></script>
+        <script type="text/javascript" src="logic.js" ></script>
     </head>
 
     <body>
@@ -14,25 +14,44 @@
         </header>
 
         <main>
-            <section id="message_box">
-                <form id="message">
-                    <div>
-                        <label for="name">Username: </label>
-                        <input type="text" name="name" />
+            <section class="left">
+                <section id="message_box" class="dark_square">
+                    <form id="message_form">
+                        <div>
+                            <label for="name">Username</label>
+                            <br>
+                            <br>
+                            <input id="name" type="text" />
+                        </div>
+                        <br>
+                        <br>
+                        <div>
+                            <label for="message">Message</label>
+                            <br>
+                            <br>
+                            <input id="message" type="text" />
+                        </div>
+                        <br>
+                        <br>
+                        <div>
+                            <button id="connect_button" type="button" onclick="Connect()">Connect</button>
+                            <input id="send_button" type="submit" value="Send"/>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="users_box" class="dark_square">
+                    <h3>Users</h3>
+                    <div id="users_list">
+
                     </div>
-                    <div>
-                        <label for="message">Message: </label>
-                        <textarea id="input_text" cols="45" rows="5"></textarea>
-                    </div>
-                    <div>
-                        <button id="connect_button" type="button" onclick="Connect()">Connect</button>
-                        <button id="send_button" type="button">Send</button>
-                    </div>
-                </form>
+                </section>
             </section>
+            
+           <section class="right">
+                <section id="chat_box" class="dark_square">
 
-            <section id="chatbox">
-
+                </section>
             </section>
         </main>
     </body>
