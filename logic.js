@@ -1,7 +1,9 @@
+var ws = null;
+
 function Connect() {
     var b_Text = document.getElementById("connect_button");
 
-    let ws = new WebSocket("ws://localhost:8080");
+    ws = new WebSocket("ws://localhost:8080");
     
     ws.onopen = () => {
         let name = document.forms["message"].name.value;
@@ -9,7 +11,8 @@ function Connect() {
 
         // this runs on successful connection
         // change Connect button to disconnect button here
-        b_Text.innerHTML = "Disconnect";        
+        b_Text.innerHTML = "Disconnect";
+        b_Text.setAttribute("onclick", "ws.close();");        
     }
 
     ws.onmessage = (mesg) => {
@@ -24,8 +27,8 @@ function Connect() {
     ws.onclose = () => {
         let name = document.forms["message"].name;
         ws.send(`${name} has left the chat!`);
-        b_Text.innerHTML = "Connect";        
-
+        b_Text.innerHTML = "Connect";
+        location.reload();
         // This runs on disconnecting from the server
         // Change Disconnect button to connect here
     }
