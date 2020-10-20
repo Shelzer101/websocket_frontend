@@ -3,7 +3,7 @@ var ws = null;
 function Connect() {
     var b_Text = document.getElementById("connect_button");
 
-    ws = new WebSocket("ws://localhost:8080");
+    ws = new WebSocket("ws://3892f0633774.ngrok.io");
     
     ws.onopen = () => {
         let name = document.forms["login_form"].name.value;
