@@ -15,27 +15,19 @@
 
         <main>
             <section class="left">
-                <section id="message_box" class="dark_square">
-                    <form id="message_form">
+                <section id="login_box" class="dark_square">
+                    <!-- onsubmit returning false to not refresh page on "Enter" key -->
+                    <form id="login_form" onsubmit="return false;">
                         <div>
                             <label for="name">Username</label>
                             <br>
                             <br>
-                            <input id="name" type="text" />
+                            <input id="name" class="text_input" type="text" />
                         </div>
                         <br>
                         <br>
                         <div>
-                            <label for="message">Message</label>
-                            <br>
-                            <br>
-                            <input id="message" type="text" />
-                        </div>
-                        <br>
-                        <br>
-                        <div>
-                            <button id="connect_button" type="button" onclick="Connect()">Connect</button>
-                            <input id="send_button" type="submit" value="Send"/>
+                            <button id="connect_button" class="button" type="button" onclick="Connect()">Connect</button>
                         </div>
                     </form>
                 </section>
@@ -51,6 +43,20 @@
            <section class="right">
                 <section id="chat_box" class="dark_square">
 
+                </section>
+
+                <section id="message_box">
+                    <h3>Message</h3>
+                    <!-- onsubmit returning false to not refresh page on "Enter" key -->
+                    <form onsubmit="return false;">
+                        <section class="dark_square">
+                            <input id="message" class="text_input" type="text" />
+                        </section>
+
+                        <div>
+                            <input id="send_button" type="submit" class="button" value="Send" />
+                        </div>
+                    </form>
                 </section>
             </section>
         </main>

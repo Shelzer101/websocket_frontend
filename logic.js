@@ -6,9 +6,8 @@ function Connect() {
     ws = new WebSocket("ws://localhost:8080");
     
     ws.onopen = () => {
-        let name = document.forms["message"].name.value;
+        let name = document.forms["login_form"].name.value;
         ws.send(`${name} has entered the chat!`);
-
         // this runs on successful connection
         // change Connect button to disconnect button here
         b_Text.innerHTML = "Disconnect";
@@ -17,20 +16,20 @@ function Connect() {
 
     ws.onmessage = (mesg) => {
         // On receiving a message from the server
-        console.log(`Message Received: ${mesg.data}`);
-        let chatbox = document.getElementById("chatbox");
+        let chat_box = document.getElementById("chat_box");
         let displayed_message = document.createElement("p");
         displayed_message.innerHTML = mesg.data;
-        chatbox.appendChild(displayed_message);
+        chat_box.appendChild(displayed_message);
+        chat_box.scrollTop = chat_box.scrollHeight;
     }
 
     ws.onclose = () => {
-        let name = document.forms["message"].name;
+        let name = document.forms["login_form"].name;
         ws.send(`${name} has left the chat!`);
         b_Text.innerHTML = "Connect";
-        location.reload();
-        // This runs on disconnecting from the server
-        // Change Disconnect button to connect here
+        // Refresh the page
+        // location.reload();
+        document.getElementById("connect_button").setAttribute("onclick", "Connect();");
     }
 
     ws.onerror = (e) => {
@@ -39,7 +38,11 @@ function Connect() {
 
     document.getElementById("send_button").addEventListener("click",
         () => {
-            ws.send(document.getElementById("input_text").value);
+            // Getting the input element
+            let message = document.getElementById("message");
+            ws.send(message.value);
+            // Clearing the text from the element after the message is sent
+            message.value = "";
         }
     )
 }
