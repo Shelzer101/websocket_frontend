@@ -5,13 +5,28 @@ function Connect() {
 
     ws = new WebSocket("ws://3892f0633774.ngrok.io");
     
+    function send_message() {
+        // Create JSON object containing name and message
+        message = {
+            // Getting name
+            "name" : document.forms["login_form"].name.value,
+            // Getting message
+            "message" : document.getElementById("message").value,
+        }
+        ws.send(JSON.stringify(message));
+        // Clearing the text from the element after the message is sent
+        document.getElementById("message").value = "";
+    }
+
     ws.onopen = () => {
-        let name = document.forms["login_form"].name.value;
-        ws.send(`${name} has entered the chat!`);
+        let name = document.forms["login_form"].name;
+        name.setAttribute("disabled", "true");
+        ws.send(`${name.value} has entered the chat!`);
         // this runs on successful connection
         // change Connect button to disconnect button here
         b_Text.innerHTML = "Disconnect";
         b_Text.setAttribute("onclick", "ws.close();");        
+        document.getElementById("send_button").addEventListener("click", send_message);
     }
 
     ws.onmessage = (mesg) => {
@@ -25,24 +40,17 @@ function Connect() {
 
     ws.onclose = () => {
         let name = document.forms["login_form"].name;
-        ws.send(`${name} has left the chat!`);
+        name.removeAttribute("disabled");
+        ws.send(`${name.value} has left the chat!`);
         b_Text.innerHTML = "Connect";
         // Refresh the page
         // location.reload();
         document.getElementById("connect_button").setAttribute("onclick", "Connect();");
+        document.getElementById("send_button").removeEventListener("click", send_message);
     }
 
     ws.onerror = (e) => {
         console.log(e);
     }
 
-    document.getElementById("send_button").addEventListener("click",
-        () => {
-            // Getting the input element
-            let message = document.getElementById("message");
-            ws.send(message.value);
-            // Clearing the text from the element after the message is sent
-            message.value = "";
-        }
-    )
 }
